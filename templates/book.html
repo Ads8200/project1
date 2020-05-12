@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Book Details
+{% endblock %}
+
+{% block main %}
+<table class="table table-sm table-striped" style="max-width:500px; margin-top:50px; margin-bottom: 50px;">
+    <thead class="thead-dark">
+        <tr>
+            <th>Item</th>
+            <th>Description</td>
+        </tr>
+    </thead>
+        <tbody>
+        <tr>
+            <td>Title</td>
+            <td>{{ book.title }}</td>
+        </tr>
+        <tr>
+            <td>Author</td>
+            <td>{{ book.author }}</td>
+        </tr>
+        <tr>
+            <td>Publication Year</td>
+            <td>{{ book.year }}</td>
+        </tr>
+        <tr>
+            <td>ISBN</td>
+            <td>{{ book.isbn }}</td>
+        </tr>
+        <tr>
+            <td>Avg Rating</td>
+            <td>{{ book.average_score }}</td>
+        </tr>
+        <tr>
+            <td>Number of Ratings</td>
+            <td>{{ book.review_count }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div>
+<form action="/review" method="post" style="margin-bottom: 50px;">
+    <input type="hidden" name="isbn" value="{{ book.isbn }}">
+    <input type="radio" name="rating" value="1" id="1">
+    <label for="1">1</label>
+    <input type="radio" name="rating" value="2" id="2">
+    <label for="2">2</label>
+    <input type="radio" name="rating" value="3" id="3">
+    <label for="3">3</label>
+    <input type="radio" name="rating" value="4" id="4">
+    <label for="4">4</label>
+    <input type="radio" name="rating" value="5" id="5">
+    <label for="5">5</label><br>
+    <textarea name="review" rows="5" cols="40" placeholder="Please leave a review"></textarea><br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+<div>
+    {% for review in reviews %}
+        Review by <b>{{ review.username }}</b> on {{ review.datetime }}<br>
+        Rating: {{ review.rating }}<br>
+        {% if review.review != "" %}
+            Comments: {{ review.review }}<br>
+        {% endif %}
+        <br>
+    {% endfor %}
+</div>
+
+{% endblock %}

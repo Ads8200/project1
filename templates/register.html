@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+<div style="max-width: 400px;margin: auto;">
+    <div style="text-align: center;">
+        <img src="../static/images/bookr_logo_lg1.png" width="140px" style="margin: 25px;" alt="">
+    </div>
+    <form action="/register" method="post">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" autofocus>
+    </div>  
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="password1">Password</label>
+      <input type="password" class="form-control" id="password1" name="password1">
+    </div>
+    <div class="form-group">
+        <label for="password2">Password confirmation</label>
+        <input type="password" class="form-control" id="password2" name="password2">
+    </div>
+    <div style="text-align: center;">
+        <button type="submit" class="btn btn-primary">Sign up</button>
+    </div>
+</form>    
+</div>
+{% endblock %}

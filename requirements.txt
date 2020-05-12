@@ -2,3 +2,22 @@ Flask
 Flask-Session
 psycopg2-binary
 SQLAlchemy
+
+# ADDED BY AW
+import os
+import string
+import requests # For the Goodreads API
+import json # For the Goodreads API
+
+from datetime import datetime
+from flask import Flask, session, url_for, render_template, redirect, request, jsonify #ADS understood
+from flask_session import Session # ADS understood
+from sqlalchemy import create_engine
+from sqlalchemy.orm import scoped_session, sessionmaker
+
+# ADS: Taken from CS50 Finance distribution code
+from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
+from werkzeug.security import check_password_hash, generate_password_hash
+
+# ADS: Taken from CS50 Finance distribution code for @login_required functionality
+from functools import wraps

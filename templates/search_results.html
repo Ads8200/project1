@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search Results
+{% endblock %}
+
+{% block main %}
+<ol style="margin-top: 50px;">
+    {% for book in books %}
+        <li>
+            <a href="{{ url_for('book', isbn=book.isbn) }}">{{ book.isbn }}</a> | {{ book.title }} | {{ book.author }}
+        </li>
+    {% endfor %}
+</ol>
+
+{% endblock %}
